@@ -15,6 +15,9 @@ nano .env
 # เริ่มระบบด่วน
 ./scripts/quick-start.sh
 
+# เปิดใช้งาน Pet Paws Theme
+./scripts/activate-theme.sh
+
 # ติดตั้งภาษาไทย
 ./scripts/setup-thai.sh
 ```
@@ -27,17 +30,20 @@ nano .env
 ## 🎯 การเข้าใช้งาน (Access Points)
 
 ### เว็บไซต์และแอดมิน
-- **🌐 เว็บไซต์หลัก**: http://localhost:8000
+- **🌐 เว็บไซต์หลัก**: http://localhost:8000 (Pet Paws Theme)
 - **👤 WordPress Admin**: http://localhost:8000/wp-admin
-- **🎛️ Easy Admin Dashboard**: http://localhost:8888
+- **🎛️ Easy Admin Dashboard**: http://localhost:8888 (Modern UI)
 - **📊 phpMyAdmin**: http://localhost:8080
 - **📧 MailHog**: http://localhost:8025
 
 ### เครื่องมือแอดมิน
-1. **Web Admin Dashboard** (http://localhost:8888)
-   - ใช้งานง่ายผ่านเว็บบราวเซอร์
-   - ไม่ต้องใช้ Terminal
-   - รองรับภาษาไทย 100%
+1. **Web Admin Dashboard** (http://localhost:8888) ✨ อัพเดทใหม่!
+   - **ดีไซน์สวยงามทันสมัย** พร้อม gradients และ animations
+   - **สีสันสดใส** ใช้งานง่ายด้วย card-based layout
+   - **รองรับ Responsive** ใช้งานได้ทุกอุปกรณ์
+   - **แสดงสถานะแบบ Real-time** พร้อม auto-refresh
+   - **ไอคอนสวยงาม** จาก Font Awesome 6
+   - **รองรับภาษาไทย 100%**
 
 2. **Terminal Admin Panel**
    ```bash
@@ -46,6 +52,15 @@ nano .env
    - เมนูภาษาไทยใน Terminal
    - ฟังก์ชันครบถ้วน
    - เหมาะสำหรับผู้ที่ชอบใช้ command line
+
+### 🎨 Pet Paws Theme
+ธีมใหม่ที่ออกแบบมาเฉพาะสำหรับร้านอาหารสัตว์เลี้ยง:
+- **Hero Section** พร้อม parallax effect
+- **Product Showcase** แสดงสินค้าสวยงาม
+- **Smooth Animations** เมื่อ scroll และ hover
+- **Quick View** ดูสินค้าแบบ popup
+- **Wishlist** ระบบรายการโปรด
+- **Mobile First** ออกแบบให้สวยบนมือถือ
 
 ## 🇹🇭 การตั้งค่าภาษาไทย (Thai Configuration)
 

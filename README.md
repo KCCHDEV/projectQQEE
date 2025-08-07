@@ -19,6 +19,26 @@ This will:
 - Initialize WordPress and WooCommerce
 - Provide access URLs
 
+### 🎨 Activate Beautiful Theme
+
+```bash
+# Activate the Pet Paws theme
+./scripts/activate-theme.sh
+
+# (Optional) Install Thai language
+./scripts/setup-thai.sh
+```
+
+## 🖼️ Beautiful Modern UI
+
+The platform includes:
+- **Custom Pet Paws Theme**: Professional design specifically for pet stores
+- **Modern Admin Dashboard**: Beautiful management interface at http://localhost:8888
+- **Responsive Design**: Works perfectly on desktop, tablet, and mobile
+- **Smooth Animations**: Enhanced user experience with subtle animations
+- **Professional Color Scheme**: Carefully chosen colors for pet industry
+- **Thai Language Ready**: Full support for Thai localization
+
 ## 🌟 Features
 
 - **WordPress & WooCommerce**: Full e-commerce functionality
@@ -29,8 +49,10 @@ This will:
 - **Easy Migration**: Built-in backup and restore tools
 - **Environment-based Configuration**: Simple host switching
 - **Thai Language Support**: Full Thai localization with THB currency
-- **Easy Admin Panel**: Web-based management dashboard
+- **Easy Admin Panel**: Beautiful web-based management dashboard
 - **Terminal Admin**: Command-line management interface
+- **Pet Paws Theme**: Modern, responsive custom theme designed for pet stores
+- **Beautiful UI**: Professional design with animations and modern styling
 
 ## 📋 Prerequisites
 
