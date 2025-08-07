@@ -28,6 +28,9 @@ This will:
 - **Email Testing**: MailHog for development
 - **Easy Migration**: Built-in backup and restore tools
 - **Environment-based Configuration**: Simple host switching
+- **Thai Language Support**: Full Thai localization with THB currency
+- **Easy Admin Panel**: Web-based management dashboard
+- **Terminal Admin**: Command-line management interface
 
 ## 📋 Prerequisites
 
@@ -134,6 +137,8 @@ Options:
 ## 📊 Access Points
 
 - **WordPress**: http://localhost:8000
+- **WordPress Admin**: http://localhost:8000/wp-admin
+- **Admin Dashboard**: http://localhost:8888 (Easy management panel)
 - **phpMyAdmin**: http://localhost:8080
 - **MailHog**: http://localhost:8025
 
