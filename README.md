@@ -1,129 +1,265 @@
-# WordPress + WooCommerce Development Environment
+# Pet Food E-commerce Platform
 
-A complete WordPress and WooCommerce e-commerce development environment using Docker Compose.
+A modern WordPress/WooCommerce-based e-commerce platform for pet food products, containerized with Docker for easy deployment and migration.
 
-## Services
-
-- **WordPress**: Latest WordPress version running on port 8000
-- **WooCommerce**: Complete e-commerce solution
-- **MySQL 8.0**: Database server
-- **phpMyAdmin**: Database management interface on port 8080
-- **Redis**: Caching server on port 6379
-- **MailHog**: Email testing interface on port 8025
-
-## Quick Start
-
-1. **Start the environment:**
-   ```bash
-   docker-compose up -d
-   ```
-
-2. **Complete WordPress installation:**
-   - URL: http://localhost:8000
-   - Follow the WordPress installation wizard
-
-3. **Setup WooCommerce (after WordPress installation):**
-   ```bash
-   ./setup-woocommerce.sh
-   ```
-
-4. **Access your services:**
-   - **WordPress/WooCommerce**: http://localhost:8000
-   - **phpMyAdmin**: http://localhost:8080
-   - **Email Testing**: http://localhost:8025
-
-## Development Features
-
-- **WooCommerce**: Complete e-commerce platform
-- **Volume mounting**: Your `wp-content` folder is mounted to the container
-- **Debug mode**: WordPress debug is enabled for development
-- **Persistent data**: Database and WordPress files persist between container restarts
-- **Email testing**: MailHog for testing order emails and notifications
-- **Caching**: Redis for improved performance
-- **Optimized PHP**: Increased memory and upload limits for WooCommerce
-
-## WooCommerce Features Included
-
-✅ **Complete e-commerce solution**  
-✅ **Product management**  
-✅ **Order processing**  
-✅ **Payment gateways**  
-✅ **Shipping methods**  
-✅ **Tax calculations**  
-✅ **Customer accounts**  
-✅ **Inventory management**  
-✅ **Analytics and reporting**  
-✅ **Sample data** for testing  
-
-## Useful Commands
+## 🚀 Quick Start
 
 ```bash
-# Start services
-docker-compose up -d
+# Clone the repository
+git clone <your-repo-url>
+cd pet-food-ecommerce
 
-# Stop services
-docker-compose down
+# Run quick start script
+./scripts/quick-start.sh
+```
+
+This will:
+- Set up environment configuration
+- Start all Docker containers
+- Initialize WordPress and WooCommerce
+- Provide access URLs
+
+### 🎨 Activate Beautiful Theme
+
+```bash
+# Activate the Pet Paws theme
+./scripts/activate-theme.sh
+
+# (Optional) Install Thai language
+./scripts/setup-thai.sh
+```
+
+## 🖼️ Beautiful Modern UI
+
+The platform includes:
+- **Custom Pet Paws Theme**: Professional design specifically for pet stores
+- **Modern Admin Dashboard**: Beautiful management interface at http://localhost:8888
+- **Responsive Design**: Works perfectly on desktop, tablet, and mobile
+- **Smooth Animations**: Enhanced user experience with subtle animations
+- **Professional Color Scheme**: Carefully chosen colors for pet industry
+- **Thai Language Ready**: Full support for Thai localization
+
+## 🌟 Features
+
+- **WordPress & WooCommerce**: Full e-commerce functionality
+- **Docker Containerized**: Easy deployment and scaling
+- **Database Management**: MySQL with phpMyAdmin interface
+- **Caching**: Redis for improved performance
+- **Email Testing**: MailHog for development
+- **Easy Migration**: Built-in backup and restore tools
+- **Environment-based Configuration**: Simple host switching
+- **Thai Language Support**: Full Thai localization with THB currency
+- **Easy Admin Panel**: Beautiful web-based management dashboard
+- **Terminal Admin**: Command-line management interface
+- **Pet Paws Theme**: Modern, responsive custom theme designed for pet stores
+- **Beautiful UI**: Professional design with animations and modern styling
+
+## 📋 Prerequisites
+
+- Docker and Docker Compose
+- 4GB+ free disk space
+- Ports 8000, 8080, 6379 available (configurable)
+
+## 🏗️ Architecture
+
+```
+├── docker-compose.yml      # Container orchestration
+├── .env.example           # Environment configuration template
+├── scripts/               # Automation scripts
+│   ├── backup.sh         # Backup database and files
+│   ├── restore.sh        # Restore from backup
+│   ├── migrate.sh        # Migration helper
+│   └── quick-start.sh    # Quick setup
+├── wp-content/           # WordPress content
+├── backups/              # Backup storage
+└── MIGRATION.md          # Detailed migration guide
+```
+
+## 🔧 Configuration
+
+1. Copy `.env.example` to `.env`
+2. Update values for your environment:
+   - `APP_URL`: Your domain
+   - Database passwords
+   - Port numbers
+   - Email settings
+
+## 🚀 Deployment
+
+### Local Development
+
+```bash
+# Start containers
+docker-compose up -d
 
 # View logs
 docker-compose logs -f
 
-# Rebuild containers
-docker-compose up -d --build
+# Stop containers
+docker-compose down
+```
 
-# Remove everything (including volumes)
-docker-compose down -v
+### Production Deployment
 
-# Setup WooCommerce (after WordPress installation)
-./setup-woocommerce.sh
+See [MIGRATION.md](MIGRATION.md) for detailed deployment instructions.
 
+## 💾 Backup & Restore
+
+### Create Backup
+
+```bash
+./scripts/backup.sh
+```
+
+Creates timestamped backups of:
+- Database
+- WordPress files
+- Configuration
+
+### Restore Backup
+
+```bash
+./scripts/restore.sh <timestamp>
+```
+
+## 🔄 Migration
+
+The project includes powerful migration tools for easy host switching:
+
+### Interactive Migration
+
+```bash
+./scripts/migrate.sh
+```
+
+Options:
+1. Prepare for migration (backup)
+2. Deploy to new host
+3. Check requirements
+4. Export migration package
+5. Import migration package
+
+### Quick Migration
+
+1. **On current host:**
+   ```bash
+   ./scripts/migrate.sh
+   # Select option 4 - Export package
+   ```
+
+2. **Transfer package to new host**
+
+3. **On new host:**
+   ```bash
+   tar -xzf migration_package_*.tar.gz
+   cd migration_*
+   ./deploy.sh
+   ```
+
+## 📊 Access Points
+
+- **WordPress**: http://localhost:8000
+- **WordPress Admin**: http://localhost:8000/wp-admin
+- **Admin Dashboard**: http://localhost:8888 (Easy management panel)
+- **phpMyAdmin**: http://localhost:8080
+- **MailHog**: http://localhost:8025
+
+## 🛠️ Maintenance
+
+### Update WordPress/Plugins
+
+```bash
 # Access WordPress CLI
-docker exec -it wordpress_app wp --allow-root
+docker exec -it pet-food-store_wordpress bash
+
+# Update WordPress
+wp core update --allow-root
+
+# Update plugins
+wp plugin update --all --allow-root
 ```
 
-## Database Credentials
+### Clear Cache
 
-- **Database Host**: `db`
-- **Database Name**: `wordpress`
-- **Database User**: `wordpress`
-- **Database Password**: `wordpress_password`
-- **Root Password**: `rootpassword`
+```bash
+# WordPress cache
+docker exec pet-food-store_wordpress wp cache flush --allow-root
 
-## File Structure
-
-```
-.
-├── docker-compose.yml
-├── setup-woocommerce.sh
-├── uploads.ini
-├── wp-content/          # Your themes, plugins, uploads
-└── README.md
+# Redis cache
+docker exec pet-food-store_redis redis-cli FLUSHALL
 ```
 
-## WooCommerce Setup Process
+## 🔒 Security
 
-1. **Start containers**: `docker-compose up -d`
-2. **Install WordPress**: Complete setup at http://localhost:8000
-3. **Run setup script**: `./setup-woocommerce.sh`
-4. **Configure store**: Access WooCommerce settings in WordPress admin
-5. **Add products**: Start building your product catalog
+- Change all default passwords in `.env`
+- Use strong database passwords
+- Enable SSL for production
+- Regular backups
+- Keep WordPress and plugins updated
 
-## Customization
+## 📝 Environment Variables
 
-- Modify `docker-compose.yml` to change ports, passwords, or add additional services
-- Add your custom themes and plugins to the `wp-content` directory
-- Configure WooCommerce settings in WordPress admin
-- Customize the `setup-woocommerce.sh` script for your specific needs
+Key variables in `.env`:
 
-## Payment Testing
+| Variable | Description | Default |
+|----------|-------------|---------|
+| APP_URL | Site URL | http://localhost:8000 |
+| WORDPRESS_PORT | WordPress port | 8000 |
+| DB_PASSWORD | Database password | secure_password_here |
+| WP_DEBUG | Debug mode | false |
 
-For development, you can use these test payment methods:
-- **Stripe**: Use test card numbers (4242 4242 4242 4242)
-- **PayPal**: Use sandbox accounts
-- **Cash on Delivery**: Available by default
+## 🐛 Troubleshooting
 
-## Performance Optimization
+### Container Issues
 
-- Redis caching is enabled for better performance
-- PHP memory limits increased for WooCommerce
-- Upload limits optimized for product images
-- Debug logging enabled for development 
+```bash
+# Check status
+docker-compose ps
+
+# View logs
+docker-compose logs wordpress
+```
+
+### Database Connection
+
+```bash
+# Test database connection
+docker exec pet-food-store_db mysql -u root -p
+```
+
+### Permission Issues
+
+```bash
+# Fix file permissions
+docker exec pet-food-store_wordpress chown -R www-data:www-data /var/www/html
+```
+
+## 📚 Documentation
+
+- [MIGRATION.md](MIGRATION.md) - Detailed migration guide
+- [Docker Compose Docs](https://docs.docker.com/compose/)
+- [WordPress Docs](https://wordpress.org/documentation/)
+- [WooCommerce Docs](https://woocommerce.com/documentation/)
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create feature branch
+3. Commit changes
+4. Push to branch
+5. Create Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🆘 Support
+
+For issues or questions:
+1. Check [MIGRATION.md](MIGRATION.md) for migration help
+2. Review container logs
+3. Check WordPress debug log
+4. Open an issue on GitHub
+
+---
+Built with ❤️ for pet lovers everywhere 
