@@ -137,6 +137,35 @@ wp-content/cache/
 wp-content/wflogs/
 wp-content/debug.log
 
+# Additional WordPress content exclusions for external development
+wp-content/uploads/**
+wp-content/upgrade/**
+wp-content/cache/**
+wp-content/backup*/**
+wp-content/ai1wm-backups/
+wp-content/et-cache/
+wp-content/w3tc*/
+wp-content/object-cache.php
+wp-content/advanced-cache.php
+wp-content/wp-cache-config.php
+wp-content/db-error.php
+
+# Plugin auto-generated files
+wp-content/plugins/*/cache/
+wp-content/plugins/*/logs/
+wp-content/plugins/*/tmp/
+
+# Theme development - exclude compiled assets
+wp-content/themes/*/node_modules/
+wp-content/themes/*/vendor/
+wp-content/themes/*/assets/dist/
+wp-content/themes/*/assets/build/
+
+# Development workspace and deployment files
+dev-workspace/
+code-deploy-*.tar.gz
+backup-*/
+
 # Docker volumes
 wordpress_data/
 db_data/
