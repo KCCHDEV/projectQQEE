@@ -78,18 +78,36 @@ echo.
 
 REM Copy pet-food-shop-template files
 if exist "pet-food-shop-template\docker-compose.yml" (
-    copy "pet-food-shop-template\docker-compose.yml" "docker-compose.yml" >nul
-    echo ✅ คัดลอก docker-compose.yml
+    copy "pet-food-shop-template\docker-compose.yml" "docker-compose.yml" >nul 2>&1
+    if errorlevel 1 (
+        echo ❌ ไม่สามารถคัดลอก docker-compose.yml ได้
+    ) else (
+        echo ✅ คัดลอก docker-compose.yml
+    )
+) else (
+    echo ⚠️ ไม่พบไฟล์ pet-food-shop-template\docker-compose.yml - ใช้ไฟล์เดิม
 )
 
 if exist "pet-food-shop-template\install.sh" (
-    copy "pet-food-shop-template\install.sh" "install-template.sh" >nul
-    echo ✅ คัดลอก install.sh
+    copy "pet-food-shop-template\install.sh" "install-template.sh" >nul 2>&1
+    if errorlevel 1 (
+        echo ❌ ไม่สามารถคัดลอก install.sh ได้
+    ) else (
+        echo ✅ คัดลอก install.sh
+    )
+) else (
+    echo ⚠️ ไม่พบไฟล์ pet-food-shop-template\install.sh - ข้าม
 )
 
 if exist "pet-food-shop-template\README.md" (
-    copy "pet-food-shop-template\README.md" "README-template.md" >nul
-    echo ✅ คัดลอก README.md
+    copy "pet-food-shop-template\README.md" "README-template.md" >nul 2>&1
+    if errorlevel 1 (
+        echo ❌ ไม่สามารถคัดลอก README.md ได้
+    ) else (
+        echo ✅ คัดลอก README.md
+    )
+) else (
+    echo ⚠️ ไม่พบไฟล์ pet-food-shop-template\README.md - ข้าม
 )
 
 REM Step 4: Copy example UI images
@@ -97,10 +115,20 @@ echo.
 echo 🖼️ ขั้นตอนที่ 4: คัดลอกรูปภาพตัวอย่าง
 echo.
 
-if exist "exampleUi\*.jpg" (
+if exist "exampleUi\" (
     if not exist "wp-content\uploads\2024\12\example-ui" mkdir "wp-content\uploads\2024\12\example-ui"
-    copy "exampleUi\*.jpg" "wp-content\uploads\2024\12\example-ui\" >nul
-    echo ✅ คัดลอกรูปภาพตัวอย่าง %count% ไฟล์
+    if exist "exampleUi\*.jpg" (
+        copy "exampleUi\*.jpg" "wp-content\uploads\2024\12\example-ui\" >nul 2>&1
+        if errorlevel 1 (
+            echo ❌ ไม่สามารถคัดลอกรูปภาพได้
+        ) else (
+            echo ✅ คัดลอกรูปภาพตัวอย่าง
+        )
+    ) else (
+        echo ⚠️ ไม่พบไฟล์รูปภาพใน exampleUi
+    )
+) else (
+    echo ⚠️ ไม่พบโฟลเดอร์ exampleUi - ข้าม
 )
 
 REM Step 5: Copy rimping UI template
@@ -108,10 +136,16 @@ echo.
 echo 🎨 ขั้นตอนที่ 5: คัดลอก UI Template
 echo.
 
-if exist "rimping-animal-foods" (
+if exist "rimping-animal-foods\" (
     if not exist "dev-workspace\ui-template" mkdir "dev-workspace\ui-template"
-    xcopy "rimping-animal-foods\*" "dev-workspace\ui-template\" /E /Y /Q >nul
-    echo ✅ คัดลอก UI Template ไปยัง dev-workspace
+    xcopy "rimping-animal-foods\*" "dev-workspace\ui-template\" /E /Y /Q >nul 2>&1
+    if errorlevel 1 (
+        echo ❌ ไม่สามารถคัดลอก UI Template ได้
+    ) else (
+        echo ✅ คัดลอก UI Template ไปยัง dev-workspace
+    )
+) else (
+    echo ⚠️ ไม่พบโฟลเดอร์ rimping-animal-foods - ข้าม
 )
 
 REM Step 6: Create environment file
