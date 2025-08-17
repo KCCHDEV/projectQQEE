@@ -469,3 +469,4 @@ const additionalStyles = `
 
 // Add styles to head
 document.head.insertAdjacentHTML('beforeend', additionalStyles);
+

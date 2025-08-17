@@ -83,3 +83,4 @@ echo.
 
 echo ✅ แก้ไขปัญหา Theme Error เรียบร้อย!
 pause
+
