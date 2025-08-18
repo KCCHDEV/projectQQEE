@@ -99,6 +99,29 @@ docker-compose logs -f
 docker-compose down
 ```
 
+### 📦 Docker Export/Import (ย้ายไปเครื่องอื่น)
+
+**สำหรับการใช้งานบนเครื่องอื่น - Export แล้วนำไป Import ได้เลย:**
+
+```bash
+# Export (เครื่องต้นทาง)
+./docker-export.sh
+
+# Import (เครื่องปลายทาง)
+cd docker-export/
+./docker-import.sh
+```
+
+**ผลลัพธ์:**
+- ✅ WordPress + WooCommerce พร้อมใช้งาน
+- ✅ ธีมและปลั๊กอินครบถ้วน
+- ✅ ฐานข้อมูลย้ายมาด้วย
+- ✅ ใช้งานได้ทันทีที่ http://localhost:8000
+
+**คู่มือโดยละเอียด:**
+- [📖 DOCKER-EXPORT-GUIDE.md](DOCKER-EXPORT-GUIDE.md) - คู่มือสมบูรณ์
+- [⚡ QUICK-EXPORT-GUIDE.md](QUICK-EXPORT-GUIDE.md) - คู่มือเร็ว 5 นาที
+
 ### Production Deployment
 
 See [MIGRATION.md](MIGRATION.md) for detailed deployment instructions.
