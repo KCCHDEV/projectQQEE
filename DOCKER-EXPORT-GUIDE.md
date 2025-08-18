@@ -24,9 +24,25 @@ cd /path/to/pet-food-ecommerce
 
 ### ขั้นตอนที่ 2: รัน Export Script
 
+#### สำหรับ Linux/Mac:
 ```bash
 # รัน script สำหรับ export
 ./docker-export.sh
+```
+
+#### สำหรับ Windows Command Prompt:
+```cmd
+# รัน script สำหรับ export
+docker-export.bat
+```
+
+#### สำหรับ Windows PowerShell (แนะนำ):
+```powershell
+# รัน script สำหรับ export
+.\docker-export.ps1
+
+# หรือระบุ parameters
+.\docker-export.ps1 -SkipDatabase -Compress:$false
 ```
 
 Script นี้จะ:
@@ -73,6 +89,7 @@ scp -r docker-export/ user@target-machine:/home/user/
 
 ### ขั้นตอนที่ 3: รัน Import Script
 
+#### สำหรับ Linux/Mac:
 ```bash
 # เข้าไปในโฟลเดอร์ที่ copy มา
 cd docker-export/
@@ -80,6 +97,27 @@ cd docker-export/
 # รัน import script
 chmod +x docker-import.sh
 ./docker-import.sh
+```
+
+#### สำหรับ Windows Command Prompt:
+```cmd
+# เข้าไปในโฟลเดอร์ที่ copy มา
+cd docker-export
+
+# รัน import script
+docker-import.bat
+```
+
+#### สำหรับ Windows PowerShell (แนะนำ):
+```powershell
+# เข้าไปในโฟลเดอร์ที่ copy มา
+cd docker-export
+
+# รัน import script
+.\docker-import.ps1
+
+# หรือระบุ parameters
+.\docker-import.ps1 -Port 9000 -Force
 ```
 
 ### ขั้นตอนที่ 4: เข้าใช้งาน
@@ -184,6 +222,58 @@ chmod -R 755 ./
 - [ ] ตรวจสอบข้อมูลใน database
 - [ ] ทดสอบการส่งอีเมล
 
+## 🎨 ระบบจัดการธีมขั้นสูง
+
+### การใช้งานผ่าน Command Line
+
+#### Linux/Mac:
+```bash
+# ดูรายการธีมทั้งหมด
+./scripts/theme-manager.sh list
+
+# เปิดใช้งานธีม
+./scripts/theme-manager.sh activate petpaws
+
+# สำรองข้อมูลธีม
+./scripts/theme-manager.sh backup petpaws
+
+# ติดตั้งธีมใหม่
+./scripts/theme-manager.sh install theme.zip
+
+# ดู gallery ธีม
+./scripts/theme-manager.sh gallery
+```
+
+#### Windows:
+```cmd
+# ดูรายการธีมทั้งหมด
+scripts\theme-manager.bat list
+
+# เปิดใช้งานธีม
+scripts\theme-manager.bat activate petpaws
+
+# สำรองข้อมูลธีม
+scripts\theme-manager.bat backup petpaws
+```
+
+### การใช้งานผ่าน Web Interface
+
+1. เข้า WordPress Admin: `http://localhost:8000/wp-admin`
+2. ไปที่ **Appearance > Theme Manager**
+3. ใช้งาน interface ที่สวยงาม:
+   - Upload ธีมใหม่
+   - เลือกจาก Gallery
+   - Backup & Restore ธีม
+   - Customize ธีม
+
+### ธีมสำหรับร้านสัตว์เลี้ยงโดยเฉพาะ
+
+- **Pet Paws Pro**: ธีมระดับมืออาชีพ
+- **Animal Care**: ธีมสำหรับบริการดูแลสัตว์
+- **Pet Shop Express**: ธีมร้านค้าออนไลน์เร็ว
+- **Veterinary Clinic**: ธีมคลินิกสัตว์
+- **Pet Grooming**: ธีมบริการอาบน้ำตัดขน
+
 ## 🎉 ข้อดีของวิธีนี้
 
 1. **ครบถ้วน**: รวมทุกอย่างในไฟล์เดียว
@@ -191,6 +281,8 @@ chmod -R 755 ./
 3. **เสถียร**: ใช้ Docker ที่เสถียร
 4. **ปลอดภัย**: มี backup ข้อมูล
 5. **ใช้ซ้ำได้**: Export ครั้งเดียว ใช้หลายเครื่อง
+6. **รองรับ Windows**: ทั้ง Command Prompt และ PowerShell
+7. **ระบบจัดการธีม**: ขั้นสูงและใช้งานง่าย
 
 ## 🔄 การอัปเดตโปรเจค
 

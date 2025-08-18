@@ -26,6 +26,13 @@ RUN curl -O https://raw.githubusercontent.com/wp-cli/wp-cli/v2.8.1/wp-cli.phar \
     && mv wp-cli.phar /usr/local/bin/wp \
     && wp --info --allow-root
 
+# Install additional tools for theme management
+RUN apt-get update && apt-get install -y \
+    git \
+    rsync \
+    jq \
+    && rm -rf /var/lib/apt/lists/*
+
 # Set proper PHP configuration for WooCommerce
 RUN { \
     echo 'memory_limit = 512M'; \
@@ -46,6 +53,10 @@ COPY pet-food-shop-template/wp-content/ /var/www/html/wp-content/
 # Copy WooCommerce configuration
 COPY woocommerce-config.php /var/www/html/wp-content/mu-plugins/woocommerce-config.php
 
+# Copy Theme Manager
+COPY theme-manager.php /var/www/html/wp-content/mu-plugins/theme-manager.php
+COPY theme-manager.js /var/www/html/wp-content/themes/assets/theme-manager.js
+
 # Copy upload configuration
 COPY uploads.ini /usr/local/etc/php/conf.d/uploads.ini
 
@@ -53,6 +64,8 @@ COPY uploads.ini /usr/local/etc/php/conf.d/uploads.ini
 RUN mkdir -p /var/www/html/wp-content/mu-plugins \
     && mkdir -p /var/www/html/wp-content/uploads \
     && mkdir -p /var/www/html/wp-content/logs \
+    && mkdir -p /var/www/html/wp-content/themes-backup \
+    && mkdir -p /usr/local/bin/theme-manager \
     && chown -R www-data:www-data /var/www/html/wp-content \
     && chmod -R 755 /var/www/html/wp-content
 

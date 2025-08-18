@@ -121,6 +121,26 @@ cd docker-export/
 **คู่มือโดยละเอียด:**
 - [📖 DOCKER-EXPORT-GUIDE.md](DOCKER-EXPORT-GUIDE.md) - คู่มือสมบูรณ์
 - [⚡ QUICK-EXPORT-GUIDE.md](QUICK-EXPORT-GUIDE.md) - คู่มือเร็ว 5 นาที
+- [🪟 WINDOWS-GUIDE.md](WINDOWS-GUIDE.md) - คู่มือเฉพาะ Windows
+
+### 🎨 ระบบจัดการธีมขั้นสูง
+
+**Theme Management ที่ทันสมัย:**
+
+```bash
+# Linux/Mac
+./scripts/theme-manager.sh list
+./scripts/theme-manager.sh activate petpaws
+
+# Windows
+scripts\theme-manager.bat list
+scripts\theme-manager.bat activate petpaws
+```
+
+**Web Interface สำหรับจัดการธีม:**
+- 🌐 เข้าที่: http://localhost:8000/wp-admin
+- 🎯 ไปที่: **Appearance > Theme Manager**
+- ✨ ฟีเจอร์: Upload, Gallery, Backup, Restore, Customize
 
 ### Production Deployment
 
