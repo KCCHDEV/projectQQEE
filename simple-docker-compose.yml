@@ -1,0 +1,67 @@
+version: '3.8'
+
+services:
+  # Database
+  db:
+    image: mysql:8.0
+    container_name: petstore_db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: petstore123
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress123
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - petstore_network
+
+  # WordPress
+  wordpress:
+    depends_on:
+      - db
+    image: wordpress:latest
+    container_name: petstore_web
+    restart: unless-stopped
+    ports:
+      - "8000:80"
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress123
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_CONFIG_EXTRA: |
+        define('WP_HOME', 'http://localhost:8000');
+        define('WP_SITEURL', 'http://localhost:8000');
+        define('WP_DEBUG', false);
+        define('WP_DEBUG_LOG', false);
+    volumes:
+      - wordpress_data:/var/www/html
+      - ./simple-pet-store:/var/www/html/wp-content/themes/simple-pet-store
+      - ./uploads:/var/www/html/wp-content/uploads
+    networks:
+      - petstore_network
+
+  # phpMyAdmin (optional)
+  phpmyadmin:
+    depends_on:
+      - db
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: petstore_admin
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: petstore123
+    networks:
+      - petstore_network
+
+volumes:
+  db_data:
+  wordpress_data:
+
+networks:
+  petstore_network:
+    driver: bridge
